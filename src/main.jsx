@@ -1,16 +1,11 @@
-import { Fragment, StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import Comienzo from './principal.jsx'
+import { BrowserRouter } from 'react-router-dom';
+import { createRoot } from 'react-dom/client';
+import AppRouter from '../routes/routes.jsx';
 
-//import './index.css'
-//import App from './App.jsx'
-
-const root = createRoot(document.getElementById('root'))
+const root = createRoot(document.getElementById('root'));
 
 root.render(
-  <Fragment>
-    
-    <Comienzo/>
-    
-  </Fragment>,
-)
+  <BrowserRouter>
+    <AppRouter />
+  </BrowserRouter>
+);
