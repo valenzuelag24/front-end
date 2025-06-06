@@ -31,6 +31,7 @@ function Comienzo() {
       navigate('/dashboard')  
     }
   }
+  
   return (
     <>
       <Container maxWidth="sm" >
@@ -81,6 +82,7 @@ function Comienzo() {
             </Grid>
           </Box>
         </Box>
+        
 
 
       </Container>
