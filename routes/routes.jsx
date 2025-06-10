@@ -1,16 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
 import Comienzo from '../src/principal.jsx';
-import Dashboard from '../src/dashboard.jsx';
-import Agregar from '../src/agregar.jsx';
-import Editar from '../src/editar.jsx';
+
+import DashboardPrincipal from '../src/dashboardPrincipal.jsx';
+import DashboardUsuarios from '../src/dashboardUsuarios.jsx';
 
 function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<Comienzo />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path='/agregar' element={<Agregar/>} ></Route>
-      <Route path='/editar/:usuario_red' element={<Editar/>} ></Route>
+      <Route path='/dashboardPrincipal' element={<DashboardPrincipal/>}></Route>
+      <Route path='/dashboardUsuarios' element={<DashboardUsuarios/>}></Route>
+      
 
     </Routes>
   );
