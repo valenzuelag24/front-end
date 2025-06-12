@@ -3,7 +3,9 @@ import axios from 'axios';
 
 const UsuariosTotal = async ()=>{
     try {
-        const data = await axios.get("http://localhost:3000/database")
+        const data = await axios.get("http://localhost:3000/database",{
+            withCredentials:true
+        })
         return data.data
     } catch (error) {
         return error

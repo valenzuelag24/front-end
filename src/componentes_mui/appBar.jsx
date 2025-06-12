@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom'
+import SECIONCERRADA from '../../apis_back/sesionCerrada';
 
 const pages = ['Inicio', 'Usuarios'];
 const settings = ['Perfil',  'Logout'];
@@ -38,6 +39,12 @@ function AppBarMui() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const cerrar = async ()=>{
+    const accion = await SECIONCERRADA()
+    navigate('/')
+    window.location.reload();
+    
+  }
 
   return (
     <AppBar position="static" sx={{borderRadius:5}}>
@@ -156,9 +163,9 @@ function AppBarMui() {
                 <MenuItem key={setting} onClick={() => {
                   handleCloseNavMenu();
                   if (setting === 'Perfil')  navigate('/dashboardPrincipal');
-                  if (setting === 'Logout') navigate('/',{replace:true}
+                  if (setting === 'Logout') {cerrar()}
                     
-                  );window.location.reload();
+                  ;window.location.reload();
                 }}>
                   <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
                 </MenuItem>

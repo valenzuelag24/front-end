@@ -8,11 +8,20 @@ import { useEffect, useState } from 'react';
 function Perfil() {
 
     const [usuarioRed, setUsuarioRed]=useState('');
+    const [correo, setCorreo]=useState('');
+    const [nombres, setNombres]=useState('');
+    const [documento, setDocumento]=useState('');
+    const [rol, setRol]=useState('');
+
 
     useEffect(()  =>{
         const peticionPerfil = async () =>{
             const respuesta = await PERFIL();
-            setUsuarioRed(respuesta);
+            setUsuarioRed(respuesta.usuario);
+            setCorreo(respuesta.correo);
+            setNombres(respuesta.nombres);
+            setDocumento(respuesta.documento);
+            setRol(respuesta.rol);
         }
         peticionPerfil();
     },[])
@@ -33,25 +42,25 @@ function Perfil() {
                 <Grid size={12} sx={{  m:2, mt:0}} >
                     Correo:
                     <Box sx={{ m:1, mb:0, mt:0, border:"1px solid black", borderRadius:5, display:"flex", justifyContent:"center", alignItems:"center"}} >
-                        <Box sx={{m:1}} >Jesus.20@gmail.com</Box>
+                        <Box sx={{m:1}} >{correo}</Box>
                     </Box>
                 </Grid>
                 <Grid size={12} sx={{  m:2, mt:0}} >
                     Nombres:
                     <Box sx={{ m:1, mb:0, mt:0, border:"1px solid black", borderRadius:5, display:"flex", justifyContent:"center", alignItems:"center"}} >
-                        <Box sx={{m:1}} >Jesus Valenzuela</Box>
+                        <Box sx={{m:1}} >{nombres}</Box>
                     </Box>
                 </Grid>
                 <Grid size={12} sx={{  m:2, mt:0}} >
                     Documento:
                     <Box sx={{ m:1, mb:0, mt:0, border:"1px solid black", borderRadius:5, display:"flex", justifyContent:"center", alignItems:"center"}} >
-                        <Box sx={{m:1}} >1049290582</Box>
+                        <Box sx={{m:1}} >{documento}</Box>
                     </Box>
                 </Grid>
                 <Grid size={12} sx={{  m:2, mt:0}} >
                     Rol:
                     <Box sx={{ m:1, mb:0, mt:0, border:"1px solid black", borderRadius:5, display:"flex", justifyContent:"center", alignItems:"center"}} >
-                        <Box sx={{m:1}} >Administrador</Box>
+                        <Box sx={{m:1}} >{rol}</Box>
                     </Box>
                 </Grid>
                 
