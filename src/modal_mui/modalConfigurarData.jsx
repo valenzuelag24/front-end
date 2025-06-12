@@ -9,6 +9,10 @@ import { useEffect, useState } from 'react';
 import EDITAR from 'C:/Trabajo_Tp/Users_Tp/front-editado/front-users/apis_back/edita.js'
 
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 
 const style = {
@@ -32,6 +36,10 @@ function MoldalConfigurarData({ open, onClose, usuario }) {
          const [contrasenna, setContrasenna]= useState('');
          const [rol, setRol]= useState('');
 
+          const handleChange = (event) => {
+               setRol(event.target.value);
+          };
+
     
          useEffect(() => {
               if (usuario) {
@@ -52,9 +60,24 @@ function MoldalConfigurarData({ open, onClose, usuario }) {
                    <TextField sx={{ mt: 2, width:'90%' }} label="Usuario_Red" value={usuario_red} onChange={(e)=> setUsuario_red(e.target.value)} />
                    <TextField sx={{ mt: 2, width:'90%' }} label="Correo" value={correo} onChange={(e)=> setCorreo(e.target.value)} />
                    <TextField sx={{ mt: 2, width:'90%' }} label="Nombres" value={nombres} onChange={(e)=> setNombres(e.target.value)} />
-                   <TextField sx={{ mt: 2, width:'90%' }} label="Documento" value={documento} onChange={(e)=> setDocumento(e.target.value)} />
-                   <TextField sx={{ mt: 2, width:'90%' }} label="Contraseña" value={contrasenna} onChange={(e)=> setContrasenna(e.target.value)} />
-                   <TextField sx={{ mt: 2, width:'90%' }} label="Rol" value={rol} onChange={(e)=> setRol(e.target.value)} />
+                   <TextField sx={{ mt: 2, width:'90%' }} label="Documento" type='number' value={documento} onChange={(e)=> setDocumento(e.target.value)} />
+                   <TextField sx={{ mt: 2, width:'90%' }} label="Contraseña" type="password" autoComplete="current-password" value={contrasenna} onChange={(e)=> setContrasenna(e.target.value)} />
+                   <Typography id="modal-modal-description" sx={{ mt: 2}}>
+                    <FormControl  sx={{width:"90%"}} >
+                    <InputLabel id="demo-simple-select-label">Rol</InputLabel>
+                    <Select
+                         labelId="demo-simple-select-label"
+                         id="demo-simple-select"
+                         value={rol}
+                         label="Rol"
+                         onChange={handleChange}
+                    >
+                         <MenuItem value={'Cliente'}>Cliente</MenuItem>
+                         <MenuItem value={'Administrador'}>Administrador</MenuItem>
+                         <MenuItem value={'Supervisor'}>Supervisor</MenuItem>
+                    </Select>
+                    </FormControl>
+                    </Typography>
 
                    <Button sx={{ mt: 2 }} onClick={() => {
                        EDITAR(usuario_red,correo,nombres,documento,contrasenna,rol);

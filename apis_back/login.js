@@ -6,8 +6,10 @@ const LOGIN = async (usuario,contraseña)=>{
         const login = await axios.post("http://localhost:3000/login",{
             usuario_red: usuario,
             contrasenna: contraseña,
+        },{
+            withCredentials: true
         })
-        
+        console.log("Token" + login.data.token)
         Swal.fire({
             title: "BIENVENIDO",
             icon: "success",
@@ -21,7 +23,7 @@ const LOGIN = async (usuario,contraseña)=>{
             icon: "error",
             draggable: true
         })
-        return flase
+        return false
     }
 }
 export default LOGIN

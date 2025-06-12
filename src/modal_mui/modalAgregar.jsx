@@ -9,6 +9,10 @@ import {  useState } from 'react';
 import AGREGAR from 'C:/Trabajo_Tp/Users_Tp/front-editado/front-users/apis_back/agregar.js'
 
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 
 const style = {
@@ -25,19 +29,28 @@ const style = {
 };
 
 function ModalAgregar() {
+
+    
     const [usuario_red, setUsuario_red]= useState('');
     const [correo, setCorreo]= useState('');
     const [nombres, setNombres]= useState('');
     const [documento, setDocumento]= useState('');
     const [contrasenna, setContrasenna]= useState('');
     const [rol, setRol]= useState('');
+    
+
+    const handleChange = (event) => {
+      setRol(event.target.value);
+    };
+
+
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
   return (
-    console.log('modal,Eliminar'),
+    
     <div>
       <Button onClick={handleOpen}sx={{color:'gray'}} >
         <PersonAddIcon sx={{fontSize:50}}></PersonAddIcon>
@@ -56,19 +69,32 @@ function ModalAgregar() {
             <TextField sx={{ width:'90%' }} id="outlined-basic" label="Usuario_Red" variant="outlined" value={usuario_red} onChange={(e)=> setUsuario_red(e.target.value)} />
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2}}>
-            <TextField sx={{ width:'90%' }} id="outlined-basic" label="Correo" variant="outlined" value={correo} onChange={(e)=> setCorreo(e.target.value)} />
+            <TextField sx={{ width:'90%' }} id="outlined-basic" label="Correo" variant="outlined" type='email' value={correo} onChange={(e)=> setCorreo(e.target.value)} />
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2}}>
-            <TextField sx={{ width:'90%' }} id="outlined-basic" label="Nombres" variant="outlined" value={nombres} onChange={(e)=> setNombres(e.target.value)} />
+            <TextField sx={{ width:'90%' }} id="outlined-basic" label="Nombres" variant="outlined"  value={nombres} onChange={(e)=> setNombres(e.target.value)} />
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2}}>
-            <TextField sx={{ width:'90%' }} id="outlined-basic" label="Documento" variant="outlined" value={documento} onChange={(e)=> setDocumento(e.target.value)} />
+            <TextField sx={{ width:'90%' }} id="outlined-basic" label="Documento" variant="outlined" type='number'  value={documento} onChange={(e)=> setDocumento(e.target.value)} />
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2}}>
-            <TextField sx={{ width:'90%' }} id="outlined-basic" label="Contraseña" variant="outlined" value={contrasenna} onChange={(e)=> setContrasenna(e.target.value)} />
+            <TextField sx={{ width:'90%' }} id="outlined-basic" label="Contraseña" variant="outlined" type="password" autoComplete="current-password" value={contrasenna} onChange={(e)=> setContrasenna(e.target.value)} />
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2}}>
-            <TextField sx={{ width:'90%' }} id="outlined-basic" label="Rol" variant="outlined" value={rol} onChange={(e)=> setRol(e.target.value)} />
+             <FormControl  sx={{width:"90%"}} >
+              <InputLabel id="demo-simple-select-label">Rol</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={rol}
+                label="Rol"
+                onChange={handleChange}
+              >
+                <MenuItem value={'Cliente'}>Cliente</MenuItem>
+                <MenuItem value={'Administrador'}>Administrador</MenuItem>
+                <MenuItem value={'Supervisor'}>Supervisor</MenuItem>
+              </Select>
+            </FormControl>
           </Typography>
 
 

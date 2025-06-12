@@ -10,6 +10,11 @@ import EDITAR from 'C:/Trabajo_Tp/Users_Tp/front-editado/front-users/apis_back/e
 
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
 
 
 const style = {
@@ -32,6 +37,10 @@ function MoldalConfigurar() {
     const [documento, setDocumento]= useState('');
     const [contrasenna, setContrasenna]= useState('');
     const [rol, setRol]= useState('');
+
+    const handleChange = (event) => {
+      setRol(event.target.value);
+    };
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -63,13 +72,26 @@ function MoldalConfigurar() {
             <TextField sx={{ width:'90%' }} id="outlined-basic" label="Nombres" variant="outlined" value={nombres} onChange={(e)=> setNombres(e.target.value)} />
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2}}>
-            <TextField sx={{ width:'90%' }} id="outlined-basic" label="Documento" variant="outlined" value={documento} onChange={(e)=> setDocumento(e.target.value)} />
+            <TextField sx={{ width:'90%' }} id="outlined-basic" label="Documento" type='number' variant="outlined" value={documento} onChange={(e)=> setDocumento(e.target.value)} />
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2}}>
-            <TextField sx={{ width:'90%' }} id="outlined-basic" label="Contraseña" variant="outlined" value={contrasenna} onChange={(e)=> setContrasenna(e.target.value)} />
+            <TextField sx={{ width:'90%' }} id="outlined-basic" label="Contraseña" type="password" autoComplete="current-password" variant="outlined" value={contrasenna} onChange={(e)=> setContrasenna(e.target.value)} />
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2}}>
-            <TextField sx={{ width:'90%' }} id="outlined-basic" label="Rol" variant="outlined" value={rol} onChange={(e)=> setRol(e.target.value)} />
+             <FormControl  sx={{width:"90%"}} >
+              <InputLabel id="demo-simple-select-label">Rol</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={rol}
+                label="Rol"
+                onChange={handleChange}
+              >
+                <MenuItem value={'Cliente'}>Cliente</MenuItem>
+                <MenuItem value={'Administrador'}>Administrador</MenuItem>
+                <MenuItem value={'Supervisor'}>Supervisor</MenuItem>
+              </Select>
+            </FormControl>
           </Typography>
 
 

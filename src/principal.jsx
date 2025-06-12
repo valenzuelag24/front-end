@@ -41,12 +41,12 @@ function Comienzo() {
         
         <Grid container sx={{ height:"100vh"}} >
           <Grid size={6} sx={{height:"100vh", display:'flex', justifyContent:'center', alignItems:'center'}} >
-            <Box sx={{ width:"60%", height:"60%", ml:29}} >
-              <Avatar  src="/static/img/loginimg.avif" sx={{height:"100%", width:"100%", borderRadius:0}} />
+            <Box sx={{  width:"60%", height:"60%", ml:29, borderRadius:"10px 0px 0px 10px", borderLeft: '1px solid gray',borderBottom: '1px solid gray',borderTop: '1px solid gray',display:'flex', justifyContent:'center', alignItems:'center'}} >
+              <Avatar  src="/static/img/loginimg.avif" sx={{height:"90%", width:"90%", borderRadius:5}} />
             </Box>
           </Grid>
           <Grid size={6} sx={{height:"100vh", display:'flex', justifyContent:'center', alignItems:'center'}} >
-            <Box sx={{ width:"60%", height:"60%", mr:29, borderRadius:5}} >
+            <Box sx={{ width:"60%", height:"60%", mr:29, borderRadius:"0 10px 10px 0px", borderRight: '1px solid gray',borderBottom: '1px solid gray',borderTop: '1px solid gray'}} >
               <Grid containes >
                 <Grid size={12} sx={{display:'flex',justifyContent:'center', alignItems:'center', mt:5}} >
                   <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />

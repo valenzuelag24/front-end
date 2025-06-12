@@ -1,8 +1,21 @@
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import  Grid  from '@mui/material/Grid';
+import PERFIL from "C:/Trabajo_Tp/Users_Tp/front-editado/front-users/apis_back/perfil.js";
+import { useEffect, useState } from 'react';
+//import TextField from '@mui/material/TextField';
 
 function Perfil() {
+
+    const [usuarioRed, setUsuarioRed]=useState('');
+
+    useEffect(()  =>{
+        const peticionPerfil = async () =>{
+            const respuesta = await PERFIL();
+            setUsuarioRed(respuesta);
+        }
+        peticionPerfil();
+    },[])
     return (
         <Container disableGutters >
             <Grid container>
@@ -14,7 +27,7 @@ function Perfil() {
                 <Grid size={12} sx={{  m:2, mb:1}} >
                     Usuario Red:
                     <Box sx={{ m:1, mb:0,mt:0, border:"1px solid black", borderRadius:5, display:"flex", justifyContent:"center", alignItems:"center"}} >
-                        <Box sx={{m:1}} >Jesus.20</Box>
+                        <Box sx={{m:1}} >{usuarioRed}</Box>
                     </Box>
                 </Grid>
                 <Grid size={12} sx={{  m:2, mt:0}} >
