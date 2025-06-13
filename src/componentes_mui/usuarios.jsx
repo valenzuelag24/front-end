@@ -35,14 +35,19 @@ function Usuario() {
         setModalAbierto(true);
     };
 
-    useEffect(()=>{
-        const traer = async () =>{
+    useEffect(() => {
+        const traer = async () => {
             const data = await UsuariosTotal();
-            setUsuarios(data.datos)
-        }
-        traer()
+            if (data) {
+                setUsuarios(data.datos);
+            } else {
+                navigate('/');
+            }
+        };
+        traer();
 
-    },[]);
+    }, []);
+
 
     const columns = [
     

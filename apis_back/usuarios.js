@@ -1,14 +1,20 @@
 import axios from 'axios';
-//import Swal from 'sweetalert2'
 
-const UsuariosTotal = async ()=>{
+const UsuariosTotal = async () => {
     try {
-        const data = await axios.get("http://localhost:3000/database",{
-            withCredentials:true
-        })
-        return data.data
+        const res = await axios.get("http://localhost:3000/database", {
+            withCredentials: true
+        });
+        
+        return res.data;
     } catch (error) {
-        return error
+        if (error.response && error.response.status === 404) {
+            
+            return undefined;
+        }
+        
+        return undefined;
     }
-}
+};
+
 export default UsuariosTotal;
